@@ -1,25 +1,39 @@
+const menu = [
+  {
+    name: 'Home',
+    link: '/',
+  },
+  {
+    name: 'About',
+    link: 'about',
+  },
+  {
+    name: 'Menu',
+    link: 'menu',
+  },
+  {
+    name: 'Reservations',
+    link: 'book',
+  },
+  {
+    name: 'Order online',
+    link: 'order',
+  },
+  {
+    name: 'Log in',
+    link: 'login',
+  },
+];
+
 const Nav = () => {
   return (
-    <nav className="w-full px-12">
-      <ul className="flex items-center justify-between font-bold text-primary-1">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="about">About</a>
-        </li>
-        <li>
-          <a href="menu">Menu</a>
-        </li>
-        <li>
-          <a href="reservations">Reservations</a>
-        </li>
-        <li>
-          <a href="order">Order online</a>
-        </li>
-        <li>
-          <a href="login">Log in</a>
-        </li>
+    <nav className="w-full px-12 mt-12 sm:mt-0">
+      <ul className="flex flex-wrap items-center justify-evenly font-bold text-lg  text-primary-1">
+        {menu.map((item, index) => (
+          <li key={index}>
+            <a href={item.link}>{item.name}</a>
+          </li>
+        ))}
       </ul>
     </nav>
   );

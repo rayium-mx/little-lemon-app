@@ -13,5 +13,32 @@
 }
 
 .title {
-  @apply font-markazi text-7xl;
+  @apply text-7xl;
+}
+
+.subtitle {
+  @apply text-4xl;
+}
+
+h1 {
+  @apply title;
+}
+
+h2 {
+  @apply subtitle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.subtitle {
+  @apply font-markazi;
+}
+
+p {
+  @apply text-base font-normal;
 }
