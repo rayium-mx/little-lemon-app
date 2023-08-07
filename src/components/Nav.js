@@ -1,37 +1,14 @@
-const menu = [
-  {
-    name: 'Home',
-    link: '/',
-  },
-  {
-    name: 'About',
-    link: 'about',
-  },
-  {
-    name: 'Menu',
-    link: 'menu',
-  },
-  {
-    name: 'Reservations',
-    link: 'book',
-  },
-  {
-    name: 'Order online',
-    link: 'order',
-  },
-  {
-    name: 'Log in',
-    link: 'login',
-  },
-];
+import { useData } from '../DataContext';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
+  const { nav } = useData().data;
   return (
     <nav className="w-full px-12 mt-12 sm:mt-0">
       <ul className="flex flex-wrap items-center justify-evenly font-bold text-lg  text-primary-1">
-        {menu.map((item, index) => (
+        {nav.map((item, index) => (
           <li key={index}>
-            <a href={item.link}>{item.name}</a>
+            <Link to={item.link}>{item.name}</Link>
           </li>
         ))}
       </ul>

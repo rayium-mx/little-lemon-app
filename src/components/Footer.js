@@ -1,18 +1,19 @@
 import logo from '../assets/logo2.png';
 import { useData } from '../DataContext';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { nav, contact, social } = useData().data;
   return (
     <footer className="bg-primary-1 p-8">
       <div className="w-9/12 mx-auto flex items-start justify-between mt-12">
-        <img src={logo} className="w-40 mr-24" alt='Little Lemon Logo' />
+        <img src={logo} className="w-40 mr-24" alt="Little Lemon Logo" />
         <div className="flex flex-wrap">
           <p className="text-light font-bold text-lg w-full">Navigation</p>
           <ul className="flex flex-wrap text-light">
             {nav.map((item, index) => (
               <li key={index} className="w-full">
-                <a href={item.link}>{item.name}</a>
+                <Link to={item.link}>{item.name}</Link>
               </li>
             ))}
           </ul>
@@ -32,9 +33,9 @@ const Footer = () => {
           <ul className="flex flex-wrap text-light">
             {social.map((item, index) => (
               <li key={index} className="w-full">
-                <a href={item.link} target="_blank">
+                <Link to={item.link} target="blank">
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
