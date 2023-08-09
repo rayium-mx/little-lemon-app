@@ -46,3 +46,11 @@ p {
 article {
   @apply my-12 p-8;
 }
+
+.form-input {
+  @apply rounded-md text-xl text-center p-2
+}
+
+.button {
+  @apply text-xl font-bold rounded-md p-4;
+}
