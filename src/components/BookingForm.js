@@ -1,17 +1,15 @@
 import { useState } from 'react';
 
-const BookingForm = () => {
-  const today = new Date().toISOString().slice(0, 10);
+const BookingForm = ({ availableTimes, updateTimes }) => {
+  function handleDateChange(newDate) {
+    updateTimes(newDate);
+    setDate(newDate);
+  }
 
-  const availableTimes = [
-    { value: 17, label: '17:00 p.m' },
-    { value: 18, label: '18:00 p.m' },
-    { value: 19, label: '19:00 p.m' },
-    { value: 20, label: '20:00 p.m' },
-    { value: 21, label: '21:00 p.m' },
-    { value: 22, label: '22:00 p.m' },
-  ];
-
+  function formatDate(date) {
+    return date.toISOString().slice(0, 10);
+  }
+  const today = formatDate(new Date());
   const occasionOptions = [
     { value: 'occasion', label: 'Occasion' },
     { value: 'birthday', label: 'Birthday' },
@@ -25,13 +23,12 @@ const BookingForm = () => {
   const [occasion, setOccasion] = useState('occasion');
 
   const getIsFormValid = () => {
-    console.log(today, date);
     return date && time && guests > 0 && occasion !== 'occasion';
   };
 
   const clearForm = () => {
     setDate(today);
-    setTime(17);
+    setTime(availableTimes[0].value);
     setGuests(1);
     setOccasion('occasion');
   };
@@ -39,15 +36,15 @@ const BookingForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (getIsFormValid()) {
-      alert('Account created!');
+      alert('Booking confirmed!');
       clearForm();
     } else {
-      alert('Llenalo bien puto');
+      alert('Please enter the correct information');
     }
   };
 
   return (
-    <div className="bg-light py-12 px-24 rounded-md">
+    <div className="bg-light py-12 px-24 rounded-md" data-testid="booking-form">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <label className="text-primary-1 subtitle" htmlFor="res-date">
           Choose date
@@ -58,7 +55,7 @@ const BookingForm = () => {
           id="res-date"
           value={date}
           onChange={e => {
-            setDate(e.target.value);
+            handleDateChange(e.target.value);
           }}
         />
         <label className="text-primary-1 subtitle" htmlFor="res-time">
@@ -66,7 +63,7 @@ const BookingForm = () => {
         </label>
         <select
           className="form-input"
-          id="res-time "
+          id="res-time"
           value={time}
           onChange={e => {
             setTime(e.target.value);
@@ -77,7 +74,7 @@ const BookingForm = () => {
             </option>
           ))}
         </select>
-        <label className="text-primary-1 subtitle" htmlFor="guests">
+        <label className="text-primary-1 subtitle" htmlFor="res-guests">
           Number of guests
         </label>
         <input
@@ -86,18 +83,18 @@ const BookingForm = () => {
           placeholder="1"
           min="1"
           max="10"
-          id="guests"
+          id="res-guests"
           value={guests}
           onChange={e => {
             setGuests(e.target.value);
           }}
         />
-        <label className="text-primary-1 subtitle" htmlFor="occasion">
-          Occasion
+        <label className="text-primary-1 subtitle" htmlFor="res-occasion">
+          What's the occasion?
         </label>
         <select
           className="form-input"
-          id="occasion"
+          id="res-occasion"
           value={occasion}
           onChange={e => {
             setOccasion(e.target.value);

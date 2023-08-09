@@ -5,7 +5,7 @@ import Testimonials from '../components/Testimonials';
 
 const HomePage = () => {
   return (
-    <main>
+    <main data-testid="home-page">
       <section>
         <Hero />
       </section>
