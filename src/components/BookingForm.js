@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const BookingForm = ({ availableTimes, updateTimes }) => {
-  function handleDateChange(newDate) {
-    updateTimes(newDate);
-    setDate(newDate);
-  }
-
+const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateChange }) => {
   function formatDate(date) {
     return date.toISOString().slice(0, 10);
   }
+
   const today = formatDate(new Date());
+
   const occasionOptions = [
     { value: 'occasion', label: 'Occasion' },
     { value: 'birthday', label: 'Birthday' },
@@ -22,13 +19,23 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('occasion');
 
+  useEffect(() => {
+    const times = updateTimes(date);
+    dispatchOnDateChange({ type: 'SET_TIMES', times }); // Dispatch action
+    setTime(times[0].value); // Set the first available time as default
+  }, [date, updateTimes]);
+
+  const handleDateChange = newDate => {
+    setDate(newDate);
+  };
+
   const getIsFormValid = () => {
     return date && time && guests > 0 && occasion !== 'occasion';
   };
 
   const clearForm = () => {
     setDate(today);
-    setTime(availableTimes[0].value);
+    setTime(availableTimes[0]?.value);
     setGuests(1);
     setOccasion('occasion');
   };
@@ -36,7 +43,8 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (getIsFormValid()) {
-      alert('Booking confirmed!');
+      submitData({ date, time, guests, occasion });
+      alert('Booking confirmed');
       clearForm();
     } else {
       alert('Please enter the correct information');
