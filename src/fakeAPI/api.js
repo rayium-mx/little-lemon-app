@@ -25,5 +25,4 @@ export const submitAPI = formData => {
     }
     return dateTime;
   });
-  return true;
 };

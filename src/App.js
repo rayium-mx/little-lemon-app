@@ -5,9 +5,11 @@ import Footer from './components/Footer';
 import { DataProvider } from './DataContext';
 import { Routes, Route } from 'react-router-dom';
 import BookingPage from './pages/BookingPage';
+import BookingConfirmed from './pages/BookingConfirmed';
 import HomePage from './pages/HomePage';
 import { useReducer } from 'react';
 import { fetchAPI, submitAPI } from '../src/fakeAPI/api';
+import { useNavigate } from 'react-router-dom';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -18,7 +20,8 @@ const reducer = (state, action) => {
   }
 };
 const App = () => {
-  const updateTimes = (date) => {
+  const navigate = useNavigate();
+  const updateTimes = date => {
     const times = fetchAPI(new Date(date));
     return times;
   };
@@ -30,6 +33,7 @@ const App = () => {
   const submitData = formData => {
     submitAPI(formData);
     dispatchOnDateChange({ type: 'SET_TIMES', times: updateTimes(formData.date) });
+    navigate('booking_confirmation', { state: formData });
   };
 
   return (
@@ -47,6 +51,7 @@ const App = () => {
               dispatchOnDateChange={dispatchOnDateChange}
             />
           }></Route>
+        <Route path="booking_confirmation" element={<BookingConfirmed />}></Route>
       </Routes>
       <Footer />
     </DataProvider>
