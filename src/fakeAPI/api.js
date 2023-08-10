@@ -21,7 +21,7 @@ export function fetchAPI(date) {
 export const submitAPI = formData => {
   dateTimes.map(dateTime => {
     if (dateTime.id === formData.date) {
-      dateTime.availableTimes = dateTime.availableTimes.filter(time => time.value != formData.time);
+      dateTime.availableTimes = dateTime.availableTimes.filter(time => time.value !== formData.time);
     }
     return dateTime;
   });

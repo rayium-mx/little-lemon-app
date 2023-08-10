@@ -17,13 +17,13 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
   const [date, setDate] = useState(today);
   const [time, setTime] = useState(17);
   const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState('occasion');
+  const [occasion, setOccasion] = useState('birthday');
 
   useEffect(() => {
     const times = updateTimes(date);
     dispatchOnDateChange({ type: 'SET_TIMES', times }); // Dispatch action
-    setTime(times[0].value); // Set the first available time as default
-  }, [date, updateTimes]);
+    setTime(times[0]?.value ?? 0); // Set the first available time as default
+  }, [date, updateTimes, dispatchOnDateChange]);
 
   const handleDateChange = newDate => {
     setDate(newDate);
@@ -37,7 +37,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
     setDate(today);
     setTime(availableTimes[0]?.value);
     setGuests(1);
-    setOccasion('occasion');
+    setOccasion('birthday');
   };
 
   const handleSubmit = e => {
@@ -59,6 +59,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
         </label>
         <input
           className="form-input"
+          min={today}
           type="date"
           id="res-date"
           value={date}
@@ -66,54 +67,62 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
             handleDateChange(e.target.value);
           }}
         />
-        <label className="text-primary-1 subtitle" htmlFor="res-time">
-          Choose time
-        </label>
-        <select
-          className="form-input"
-          id="res-time"
-          value={time}
-          onChange={e => {
-            setTime(e.target.value);
-          }}>
-          {availableTimes.map((option, index) => (
-            <option key={index} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <label className="text-primary-1 subtitle" htmlFor="res-guests">
-          Number of guests
-        </label>
-        <input
-          className="form-input"
-          type="number"
-          placeholder="1"
-          min="1"
-          max="10"
-          id="res-guests"
-          value={guests}
-          onChange={e => {
-            setGuests(e.target.value);
-          }}
-        />
-        <label className="text-primary-1 subtitle" htmlFor="res-occasion">
-          What's the occasion?
-        </label>
-        <select
-          className="form-input"
-          id="res-occasion"
-          value={occasion}
-          onChange={e => {
-            setOccasion(e.target.value);
-          }}>
-          {occasionOptions.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <input className="mt-6 bg-primary-2 button" type="submit" value="Make Your Reservation" />
+        {availableTimes.length > 0 ? (
+          <>
+            <label className="text-primary-1 subtitle" htmlFor="res-time">
+              Choose time
+            </label>
+            <select
+              className="form-input"
+              id="res-time"
+              value={time}
+              onChange={e => {
+                setTime(e.target.value);
+              }}>
+              {availableTimes.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <label className="text-primary-1 subtitle" htmlFor="res-guests">
+              Number of guests
+            </label>
+            <input
+              className="form-input"
+              type="number"
+              placeholder="1"
+              min="1"
+              max="10"
+              id="res-guests"
+              value={guests}
+              onChange={e => {
+                setGuests(e.target.value);
+              }}
+            />
+            <label className="text-primary-1 subtitle" htmlFor="res-occasion">
+              What's the occasion?
+            </label>
+            <select
+              className="form-input"
+              id="res-occasion"
+              value={occasion}
+              onChange={e => {
+                setOccasion(e.target.value);
+              }}>
+              {occasionOptions.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <input className="mt-6 bg-primary-2 button" type="submit" value="Make Your Reservation" />
+          </>
+        ) : (
+          <div>
+            <p className="font-bold text-primary-1">Looks like we're fully booked! Please select a different date</p>
+          </div>
+        )}
       </form>
     </div>
   );
