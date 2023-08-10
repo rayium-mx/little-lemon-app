@@ -1,5 +1,5 @@
-const dateTimes = [];
-const defaultTimes = [
+export const dateTimes = [];
+export const defaultTimes = [
   { value: 17, label: '17:00 p.m' },
   { value: 18, label: '18:00 p.m' },
   { value: 19, label: '19:00 p.m' },
