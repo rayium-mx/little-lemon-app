@@ -8,7 +8,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
   const today = formatDate(new Date());
 
   const occasionOptions = [
-    { value: 'occasion', label: 'Occasion' },
+    { value: 'none', label: 'No special occasion' },
     { value: 'birthday', label: 'Birthday' },
     { value: 'anniversary', label: 'Anniversary' },
     { value: 'business', label: 'Business' },
@@ -16,8 +16,8 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
 
   const [date, setDate] = useState(today);
   const [time, setTime] = useState(17);
-  const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState('birthday');
+  const [guests, setGuests] = useState(2);
+  const [occasion, setOccasion] = useState('none');
 
   useEffect(() => {
     const times = updateTimes(date);
@@ -30,14 +30,14 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
   };
 
   const getIsFormValid = () => {
-    return date && time && guests > 0 && occasion !== 'occasion';
+    return date && time && guests > 0 && occasion;
   };
 
   const clearForm = () => {
     setDate(today);
     setTime(availableTimes[0]?.value);
-    setGuests(1);
-    setOccasion('birthday');
+    setGuests(2);
+    setOccasion('none');
   };
 
   const handleSubmit = e => {
@@ -58,6 +58,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
           Choose date
         </label>
         <input
+          aria-label="Choose a date"
           className="form-input"
           min={today}
           type="date"
@@ -73,6 +74,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
               Choose time
             </label>
             <select
+              aria-label="Choose a time"
               className="form-input"
               id="res-time"
               value={time}
@@ -89,10 +91,11 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
               Number of guests
             </label>
             <input
+              aria-label="Select the number of guests"
               className="form-input"
               type="number"
-              placeholder="1"
-              min="1"
+              placeholder="2"
+              min="2"
               max="10"
               id="res-guests"
               value={guests}
@@ -104,6 +107,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
               What's the occasion?
             </label>
             <select
+              aria-label="Select an occasion"
               className="form-input"
               id="res-occasion"
               value={occasion}
@@ -116,7 +120,12 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
                 </option>
               ))}
             </select>
-            <input className="mt-6 bg-primary-2 button" type="submit" value="Make Your Reservation" />
+            <input
+              aria-label="Click to submit reservation"
+              className="mt-6 bg-primary-2 button"
+              type="submit"
+              value="Make Your Reservation"
+            />
           </>
         ) : (
           <div>
