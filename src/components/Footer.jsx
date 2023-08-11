@@ -12,7 +12,7 @@ const Footer = () => {
           <p className="text-light font-bold text-lg w-full">Navigation</p>
           <ul className="flex flex-wrap text-light">
             {nav.map((item, index) => (
-              <li key={index} className="w-full">
+              <li key={index} className="w-full text-light">
                 <Link to={item.link}>{item.name}</Link>
               </li>
             ))}
@@ -23,7 +23,7 @@ const Footer = () => {
           <ul className="flex flex-wrap text-light">
             {Object.values(contact).map((contact, index) => (
               <li key={index} className="w-full">
-                <p>{contact}</p>
+                <p className="text-light">{contact}</p>
               </li>
             ))}
           </ul>
@@ -32,7 +32,7 @@ const Footer = () => {
           <p className="text-light font-bold text-lg w-full">Social Media</p>
           <ul className="flex flex-wrap text-light">
             {social.map((item, index) => (
-              <li key={index} className="w-full">
+              <li key={index} className="w-full text-light">
                 <Link to={item.link} target="blank">
                   {item.name}
                 </Link>

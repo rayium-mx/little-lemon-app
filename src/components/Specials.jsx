@@ -47,7 +47,7 @@ const Specials = () => {
                   <p className="text-secondary-1 font-semibold">$ {special.price}</p>
                 </div>
                 <p style={{ minHeight: '8rem' }}>{special.description}</p>
-                <button className="pl-0 text-dark flex items-stretch">
+                <button className="pl-0 flex items-stretch">
                   Order for delivery
                   <img src={delivery} alt="Delivery" className="ml-4 w-6" />
                 </button>

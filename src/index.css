@@ -6,6 +6,7 @@
 
 * {
   font-family: 'Karla', sans-serif;
+  @apply text-dark;
 }
 
 .font-markazi {

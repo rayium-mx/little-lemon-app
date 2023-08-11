@@ -16,12 +16,12 @@ const BookingConfirmed = () => {
           className="bg-light py-12 rounded-lg flex items-center justify-center flex-col"
           data-testid="booking-confirmation">
           <p className="subtitle text-primary-1">Your reservation: </p>
-          <p className="font-bold text-dark mt-8 text-xl">Date and time:</p>
-          <p className="text-dark text-2xl">{date.toLocaleString('en-GB')}</p>
-          <p className="font-bold text-dark mt-8 text-xl">Number of guests:</p>
-          <p className="text-dark text-2xl">{guests}</p>
-          <p className="font-bold text-dark mt-8 text-xl">Occasion:</p>
-          <p className="text-dark text-2xl capitalize">{occasion}</p>
+          <p className="font-bold mt-8 text-xl">Date and time:</p>
+          <p className="text-2xl">{date.toLocaleString('en-GB')}</p>
+          <p className="font-bold mt-8 text-xl">Number of guests:</p>
+          <p className="text-2xl">{guests}</p>
+          <p className="font-bold mt-8 text-xl">Occasion:</p>
+          <p className="text-2xl capitalize">{occasion}</p>
           <p className="title text-primary-1 mt-8">See you soon!</p>
           <button className="primary-2 mt-12" onClick={() => navigate('/')}>
             Back to Homepage
