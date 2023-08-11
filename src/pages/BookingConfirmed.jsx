@@ -13,7 +13,7 @@ const BookingConfirmed = () => {
       </div>
       <div className="w-2/4 mx-auto sm:my-12" data-testid="booking-page">
         <div
-          className="bg-light py-12 rounded-md flex items-center justify-center flex-col"
+          className="bg-light py-12 rounded-lg flex items-center justify-center flex-col"
           data-testid="booking-confirmation">
           <p className="subtitle text-primary-1">Your reservation: </p>
           <p className="font-bold text-dark mt-8 text-xl">Date and time:</p>
@@ -23,7 +23,7 @@ const BookingConfirmed = () => {
           <p className="font-bold text-dark mt-8 text-xl">Occasion:</p>
           <p className="text-dark text-2xl capitalize">{occasion}</p>
           <p className="title text-primary-1 mt-8">See you soon!</p>
-          <button className="button primary-2 mt-12" onClick={() => navigate('/')}>
+          <button className="primary-2 mt-12" onClick={() => navigate('/')}>
             Back to Homepage
           </button>
         </div>

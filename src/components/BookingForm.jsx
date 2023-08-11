@@ -71,7 +71,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
   };
 
   return (
-    <div className="bg-light py-12 px-24 rounded-md" data-testid="booking-form">
+    <div className="bg-light py-12 px-24 rounded-lg" data-testid="booking-form">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <label className="text-primary-1 subtitle" htmlFor="res-date">
           Choose date
@@ -141,7 +141,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
             </select>
             <input
               aria-label="Confirm reservation"
-              className="mt-6 primary-2 button"
+              className="mt-6 bg-primary-2 text-dark hover:brightness-105 "
               type="submit"
               value="Confirm Reservation"
             />

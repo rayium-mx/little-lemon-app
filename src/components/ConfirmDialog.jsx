@@ -9,7 +9,7 @@ const ConfirmDialog = ({ message, onConfirm }) => {
       onClick={() => onConfirm(false)}>
       <div
         onClick={e => e.stopPropagation()}
-        className="flex flex-col items-center justify-center absolute bg-light rounded-md p-8"
+        className="flex flex-col items-center justify-center absolute bg-light rounded-lg p-8"
         style={{
           top: '50%',
           left: '50%',
@@ -17,10 +17,10 @@ const ConfirmDialog = ({ message, onConfirm }) => {
         }}>
         <p className="text-primary-1 text-lg">{message}</p>
         <div className="flex items-center justify-around mt-12 w-full flex-col-reverse sm:flex-row">
-          <button onClick={() => onConfirm(false)} className="button text-primary-1 mt-4 sm:mt-0">
+          <button onClick={() => onConfirm(false)} className="text-primary-1 mt-4 sm:mt-0">
             No, go back
           </button>
-          <button onClick={() => onConfirm(true)} className="button primary-2">
+          <button onClick={() => onConfirm(true)} className="primary-2">
             Yes, continue
           </button>
         </div>

@@ -11,15 +11,15 @@ const Hero = () => {
           <p className="text-light sm:w-2/3 mt-4">
             We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist
           </p>
-          <div className="button primary-2 my-4 w-full sm:w-2/3">
+          <button className="primary-2 my-4 w-full sm:w-2/3">
             <Link to="book">Make a reservation</Link>
-          </div>
+          </button>
         </div>
         <div className="hidden sm:flex w-1/2 justify-end">
           <img
             src={food}
             style={{ height: '28rem' }}
-            className="sm:w-4/5 object-cover rounded-md"
+            className="sm:w-4/5 object-cover rounded-lg"
             alt="Restaurant food"
           />
         </div>

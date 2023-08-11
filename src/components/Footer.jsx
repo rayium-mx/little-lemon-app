@@ -6,7 +6,7 @@ const Footer = () => {
   const { nav, contact, social } = useData().data;
   return (
     <footer className="bg-primary-1 p-8" data-testid="footer">
-      <div className="w-9/12 mx-auto flex items-start justify-between my-12 gap-12 sm:gap-24 flex-col sm:flex-row">
+      <div className="w-10/12 mx-auto flex items-start justify-between my-12 gap-12 sm:gap-24 flex-col sm:flex-row">
         <img src={logo} className="w-40" alt="Little Lemon Logo" />
         <div className="flex flex-wrap">
           <p className="text-light font-bold text-lg w-full">Navigation</p>
