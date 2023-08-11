@@ -46,7 +46,7 @@ const Testimonials = () => {
   return (
     <article id="testimonials">
       <div className="sm:w-10/12 mx-auto p-5">
-        <h1 className="text-primary-2 mb-12 text-center">Testimonials</h1>
+        <h1 className="text-primary-2 mb-12 sm:text-center">Testimonials</h1>
         <div className="flex items-stretch justify-between gap-8 flex-col sm:flex-row">
           {testimonials.map((customer, index) => {
             return <Card key={index} content={CardContent(customer)} />;

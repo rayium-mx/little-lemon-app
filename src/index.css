@@ -52,7 +52,8 @@ article {
   @apply rounded-lg text-xl text-center p-2;
 }
 
-button, input[type="submit"] {
+button,
+input[type='submit'] {
   @apply text-xl font-bold rounded-lg p-4 cursor-pointer text-center drop-shadow-sm;
 }
 
@@ -75,4 +76,25 @@ button.primary-2:hover {
 input:disabled,
 select:disabled {
   @apply opacity-5;
+}
+
+.image-container {
+  position: relative;
+  /* .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+  .image_top {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    z-index: 1;
+  }
+
+  .image_bottom {
+    position: absolute;
+    left: 20%;
+  }
 }
