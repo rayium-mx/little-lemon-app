@@ -1,5 +1,5 @@
 import restaurant from '../assets/restaurant.jpg';
-import chefs from '../assets/Mario and Adrian A.jpg';
+import chefs from '../assets/chefs_a.jpg';
 
 const RestaurantImg = () => {
   return <img className="shadow-md rounded-lg" src={restaurant} alt="Little Lemon Restaurant" />;
@@ -13,7 +13,7 @@ const AboutUs = () => {
   return (
     <article id="about-us">
       <h1>About us</h1>
-      <div className="mt-12 mb-8 flex justify-center gap-4 flex-col sm:flex-row">
+      <div className="mt-12 sm:mb-48 flex justify-center gap-4 flex-col sm:flex-row">
         <div className="sm:w-1/2">
           <h1 className="text-primary-2">Little Lemon</h1>
           <h1 className="text-primary-1">Chicago</h1>

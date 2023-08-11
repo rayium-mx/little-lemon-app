@@ -89,7 +89,7 @@ select:disabled {
   .image_top {
     position: absolute;
     top: 50%;
-    right: 20%;
+    right: 30%;
     z-index: 1;
   }
 
