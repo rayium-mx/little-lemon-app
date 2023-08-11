@@ -11,7 +11,11 @@ const HomePage = () => {
       </section>
       <section className="w-full sm:w-10/12 sm:mt-44 mx-auto">
         <Specials />
+      </section>
+      <section className="w-full bg-primary-1 mx-auto">
         <Testimonials />
+      </section>
+      <section className="w-full sm:w-10/12 mx-auto">
         <AboutUs />
       </section>
     </main>

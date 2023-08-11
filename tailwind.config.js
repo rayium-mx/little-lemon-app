@@ -12,7 +12,7 @@ module.exports = {
         'secondary-1': '#ee9972',
         'secondary-2': '#fbdabb',
         light: '#edefee',
-        dark: '#333',
+        dark: '#333333',
       },
     },
   },

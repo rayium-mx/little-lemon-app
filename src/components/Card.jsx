@@ -1,5 +1,5 @@
-const Card = props => {
-  return <div className="bg-light rounded-lg">{props.children}</div>;
+const Card = ({content, bgColor}) => {
+  return <div className={`bg-${bgColor ?? 'light'} rounded-lg shadow-md hover:shadow-lg`}>{content}</div>;
 };
 
 export default Card;

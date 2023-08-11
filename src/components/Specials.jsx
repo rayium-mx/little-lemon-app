@@ -25,6 +25,25 @@ const specials = [
   },
 ];
 
+const CardContent = special => {
+  return (
+    <>
+      <img src={require(`../assets/${special.img}`)} className="object-cover w-full rounded-t-lg" alt={special.name} />
+      <div className="p-5">
+        <div className="flex items-center justify-between mb-4">
+          <p className="font-markazi text-3xl">{special.name}</p>
+          <p className="text-secondary-1 font-semibold">$ {special.price}</p>
+        </div>
+        <p style={{ minHeight: '8rem' }}>{special.description}</p>
+        <button className="pl-0 flex items-stretch">
+          Order for delivery
+          <img src={delivery} alt="Delivery" className="ml-4 w-6" />
+        </button>
+      </div>
+    </>
+  );
+};
+
 const Specials = () => {
   return (
     <article id="specials">
@@ -32,28 +51,9 @@ const Specials = () => {
         <h1>This week's specials!</h1>
         <button className="primary-2 mt-8 w-full sm:w-fit sm:mt-0">Online Menu</button>
       </div>
-      <div className="flex items-center justify-between gap-4 flex-col sm:flex-row">
+      <div className="flex items-center justify-between gap-8 flex-col sm:flex-row">
         {specials.map((special, index) => {
-          return (
-            <Card key={index}>
-              <img
-                src={require(`../assets/${special.img}`)}
-                className="object-cover w-full rounded-t-lg"
-                alt={special.name}
-              />
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <p className="font-markazi text-3xl">{special.name}</p>
-                  <p className="text-secondary-1 font-semibold">$ {special.price}</p>
-                </div>
-                <p style={{ minHeight: '8rem' }}>{special.description}</p>
-                <button className="pl-0 flex items-stretch">
-                  Order for delivery
-                  <img src={delivery} alt="Delivery" className="ml-4 w-6" />
-                </button>
-              </div>
-            </Card>
-          );
+          return <Card key={index} content={CardContent(special)}/>;
         })}
       </div>
     </article>
