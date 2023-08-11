@@ -13,7 +13,7 @@
 }
 
 .title {
-  @apply text-7xl;
+  @apply text-7xl font-semibold;
 }
 
 .subtitle {
@@ -52,7 +52,7 @@ article {
 }
 
 .button {
-  @apply text-xl font-bold rounded-md p-4;
+  @apply text-xl font-bold rounded-md p-4 cursor-pointer;
 }
 
 input:disabled, select:disabled {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ConfirmDialog from './ConfirmDialog';
 
 const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateChange }) => {
   function formatDate(date) {
@@ -40,15 +41,33 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
     setOccasion('none');
   };
 
+  const [confirmDialog, setConfirmDialog] = useState({
+    message: '',
+    toggle: false,
+  });
+
+  const handleConfirmDialog = (message, toggle) => {
+    setConfirmDialog({
+      message,
+      toggle,
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     if (getIsFormValid()) {
-      submitData({ date, time, guests, occasion });
-      alert('Booking confirmed');
-      clearForm();
+      handleConfirmDialog('Are you ready to confirm your reservation?', true);
     } else {
-      alert('Please enter the correct information');
+      alert('Please check the information provided and try again');
     }
+  };
+
+  const makeReservation = confirm => {
+    if (confirm) {
+      submitData({ date, time, guests, occasion });
+      clearForm();
+    }
+    handleConfirmDialog('', false);
   };
 
   return (
@@ -121,7 +140,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
               ))}
             </select>
             <input
-              aria-label="Click to submit reservation"
+              aria-label="Confirm reservation"
               className="mt-6 bg-primary-2 button"
               type="submit"
               value="Make Your Reservation"
@@ -133,6 +152,7 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
           </div>
         )}
       </form>
+      {confirmDialog.toggle && <ConfirmDialog onConfirm={makeReservation} message={confirmDialog.message} />}
     </div>
   );
 };
