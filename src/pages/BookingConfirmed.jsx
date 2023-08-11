@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const BookingConfirmed = () => {
-  const navigate = useNavigate();
   const { state } = useLocation();
   let { date, time, guests, occasion } = state;
   date = new Date(date);
@@ -23,8 +23,8 @@ const BookingConfirmed = () => {
           <p className="font-bold mt-8 text-xl">Occasion:</p>
           <p className="text-2xl capitalize">{occasion}</p>
           <p className="title text-primary-1 mt-8">See you soon!</p>
-          <button className="primary-2 mt-12" onClick={() => navigate('/')}>
-            Back to Homepage
+          <button className="primary-2 mt-12">
+            <Link to="/">Back to Homepage</Link>
           </button>
         </div>
       </div>

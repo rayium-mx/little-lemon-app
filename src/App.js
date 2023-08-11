@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import { useReducer } from 'react';
 import { fetchAPI, submitAPI } from '../src/fakeAPI/api';
 import { useNavigate } from 'react-router-dom';
+import NotFound from './pages/NotFound';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,6 +53,7 @@ const App = () => {
             />
           }></Route>
         <Route path="booking_confirmation" element={<BookingConfirmed />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />
     </DataProvider>
