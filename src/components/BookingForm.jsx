@@ -141,9 +141,9 @@ const BookingForm = ({ availableTimes, updateTimes, submitData, dispatchOnDateCh
             </select>
             <input
               aria-label="Confirm reservation"
-              className="mt-6 bg-primary-2 button"
+              className="mt-6 primary-2 button"
               type="submit"
-              value="Make Your Reservation"
+              value="Confirm Reservation"
             />
           </>
         ) : (

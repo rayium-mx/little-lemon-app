@@ -11,7 +11,7 @@ const Nav = () => {
         {nav.map((item, index) => (
           <li
             key={index}
-            className={`border-primary-1 ${selected === index ? 'border-b-2' : 'hover:border-b hover:-mb-px '}`}
+            className={`border-primary-1 ${selected === index ? 'border-b-2' : 'hover:border-b hover:-mb-px'}`}
             onClick={e => {
               e.preventDefault();
               setSelected(index);

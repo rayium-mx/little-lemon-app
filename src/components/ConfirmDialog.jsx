@@ -1,4 +1,4 @@
-function ConfirmDialog({ message, onConfirm }) {
+const ConfirmDialog = ({ message, onConfirm }) => {
   return (
     <div
       data-testid="confirm-dialog"
@@ -20,13 +20,13 @@ function ConfirmDialog({ message, onConfirm }) {
           <button onClick={() => onConfirm(false)} className="button text-primary-1 mt-4 sm:mt-0">
             No, go back
           </button>
-          <button onClick={() => onConfirm(true)} className="button bg-primary-2 text-dark">
+          <button onClick={() => onConfirm(true)} className="button primary-2">
             Yes, continue
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ConfirmDialog;

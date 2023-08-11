@@ -23,7 +23,7 @@ const BookingConfirmed = () => {
           <p className="font-bold text-dark mt-8 text-xl">Occasion:</p>
           <p className="text-dark text-2xl capitalize">{occasion}</p>
           <p className="title text-primary-1 mt-8">See you soon!</p>
-          <button className="button bg-primary-2 mt-12" onClick={() => navigate('/')}>
+          <button className="button primary-2 mt-12" onClick={() => navigate('/')}>
             Back to Homepage
           </button>
         </div>

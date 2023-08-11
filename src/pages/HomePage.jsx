@@ -9,7 +9,7 @@ const HomePage = () => {
       <section>
         <Hero />
       </section>
-      <section className="w-9/12 mx-auto">
+      <section className="w-9/12 sm:mt-44 mx-auto">
         <Specials />
         <Testimonials />
         <AboutUs />

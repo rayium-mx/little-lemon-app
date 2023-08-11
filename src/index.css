@@ -48,13 +48,30 @@ article {
 }
 
 .form-input {
-  @apply rounded-md text-xl text-center p-2
+  @apply rounded-md text-xl text-center p-2;
 }
 
 .button {
-  @apply text-xl font-bold rounded-md p-4 cursor-pointer;
+  @apply text-xl font-bold rounded-md p-4 cursor-pointer text-center;
 }
 
-input:disabled, select:disabled {
+.button.primary-1 {
+  @apply bg-primary-1 text-light;
+}
+
+.button.primary-2:hover {
+  @apply brightness-105;
+}
+
+.button.primary-2 {
+  @apply bg-primary-2 text-dark;
+}
+
+.button.primary-2:hover {
+  @apply brightness-105;
+}
+
+input:disabled,
+select:disabled {
   @apply opacity-5;
 }
